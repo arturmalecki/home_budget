@@ -15,7 +15,7 @@ defmodule HomeBudget.SessionController do
       :error ->
         conn
         |> put_flash(:error, "Wrong email or password")
-        |> render("new.html")
+        |> render("new.html", current_user: nil)
     end
   end
 
