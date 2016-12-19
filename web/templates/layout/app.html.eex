@@ -25,17 +25,20 @@
       <main role="main">
         <div class="row marketing">
           <div class="col-lg-6">
-            <h4>User area</h4>
-              <%= link "Login", to: session_path(@conn, :new) %> |
-              <%= link "Register", to: registration_path(@conn, :new) %>
-            </ul>
+            <%= if @current_user do %>
+              <h4>User area</h4>
+                <%= link "Login out", to: session_path(@conn, :delete), method: :delete %>
+              </ul>
+            <% else %>
+              <h4>User area</h4>
+                <%= link "Login", to: session_path(@conn, :new) %> |
+                <%= link "Register", to: registration_path(@conn, :new) %>
+              </ul>
+            <% end %>
           </div>
         </div>
 
         <%= render @view_module, @view_template, assigns %>
-        =====
-        <%= Guardian.Plug.current_resource(@conn) %>
-        =====
       </main>
 
     </div> <!-- /container -->

@@ -5,13 +5,13 @@ defmodule HomeBudget.RegistrationController do
 
   def new(conn, _params) do
     changeset = User.changeset(%User{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, current_user: nil)
   end
 
   def create(conn, %{"user" => user_params}) do
     changeset = User.changeset(%User{}, user_params)
     case HomeBudget.Registration.create(changeset, HomeBudget.Repo) do
-      {:ok, changeset} ->
+      {:ok, _changeset} ->
         conn
         |> put_flash(:info, "Your account was created!")
         |> redirect(to: page_path(conn, :index))
