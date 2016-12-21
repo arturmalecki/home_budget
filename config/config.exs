@@ -26,8 +26,3 @@ config :logger, :console,
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
 
-config :guardian, Guardian,
-  issuer: "HomeBudget",
-  ttl: { 30, :days },
-  secret_key: "Super_secret_key",
-  serializer: HomeBudget.GuardianSerializer
