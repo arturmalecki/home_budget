@@ -19,7 +19,7 @@ defmodule HomeBudget.Mixfile do
   def application do
     [mod: {HomeBudget, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :ex_machina]]
+                    :phoenix_ecto, :postgrex, :ex_machina, :comeonin]]
   end
 
   # Specifies which paths to compile per environment.
@@ -38,8 +38,10 @@ defmodule HomeBudget.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
+     {:ex_machina, "~> 1.0"},
+
      {:guardian, "~> 0.13.0"},
-     {:ex_machina, "~> 1.0"}
+     {:comeonin, "~> 3.0"}
      ]
   end
 
