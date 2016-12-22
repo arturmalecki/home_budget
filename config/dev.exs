@@ -54,3 +54,5 @@ config :guardian, Guardian,
     "x" => "ANTQQSkUGOUHmTKe_9-MgDisqdcz3fBPMUeYUmtDhRsdg5NQmHQBbnWfMPB3Px4l4DIJY8bWRVejv6Z2yclpg80m",
     "y" => "AET6RGnO4Tqj4V8NMMtT7fpRWQ68x4rmxQkLO5-jUTsEbWcgeW_SFlbM9JE2jLujjHSqTDDboAbD2SYDo1XzAzBM"
   }
+
+import_config "dev.secret.exs"

@@ -21,6 +21,5 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 
 ## TODO
 
-  * Add password confirmation validation
   * Add "forgot my password" 
-  * Add user registration uniquenss checker
+  * Return to dashboard when singned in user try to hit /login or /sing-up pages

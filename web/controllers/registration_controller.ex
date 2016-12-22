@@ -17,8 +17,7 @@ defmodule HomeBudget.RegistrationController do
         |> redirect(to: page_path(conn, :index))
       {:error, changeset} ->
         conn
-        |> put_flash(:error, "Something went wrong")
-        |> render("new.html", changeset: changeset)
+        |> render("new.html", changeset: changeset, current_user: nil )
     end
   end
 end
