@@ -41,6 +41,7 @@ defmodule HomeBudget.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:ex_machina, "~> 1.0"},
+      {:uuid, "~> 1.1" },
 
       {:guardian, "~> 0.13.0"},
       {:comeonin, "~> 3.0"},

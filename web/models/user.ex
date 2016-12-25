@@ -5,6 +5,7 @@ defmodule HomeBudget.User do
     field :name, :string
     field :email, :string
     field :encrypted_password, :string
+    field :reset_password_token, :string
     
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
@@ -20,8 +21,21 @@ defmodule HomeBudget.User do
     |> cast(params, [:email, :password, :encrypted_password])
     |> validate_required([:email, :password])
     |> unique_constraint(:email)
-    |> validate_confirmation(:password)
-    |> validate_length(:password, min: 8)
+    |> validate_password
+  end
+
+  def edit_changest(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:email, :password, :encrypted_password])
+    |> validate_required([:email])
+    |> unique_constraint(:email)
+  end
+
+  def new_password_changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:password])
+    |> validate_password
+    |> put_change(:reset_password_token, nil)
   end
 
   def find_and_confirm_password(session_params, repo) do
@@ -36,5 +50,11 @@ defmodule HomeBudget.User do
       true -> {:ok, user}
       _ -> :error
     end
+  end
+
+  defp validate_password(struct) do
+    struct
+    |> validate_confirmation(:password)
+    |> validate_length(:password, min: 8)
   end
 end

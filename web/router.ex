@@ -30,6 +30,8 @@ defmodule HomeBudget.Router do
     get "/signup", RegistrationController, :new
     post "/signup", RegistrationController, :create
 
+    resources "/passwords", PasswordController, only: [:new, :create, :edit, :update]
+
     get "/dashboard", DashboardController, :show
   end
 
