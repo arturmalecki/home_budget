@@ -11,7 +11,7 @@ config :home_budget,
 
 # Configures the endpoint
 config :home_budget, HomeBudget.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "127.0.0.1"],
   secret_key_base: "UeKw642ya8ei+r7ZhhcSwz60YmUTowH5u13UVx/LktOBExBf8CqzftePPinVxv6j",
   render_errors: [view: HomeBudget.ErrorView, accepts: ~w(html json)],
   pubsub: [name: HomeBudget.PubSub,
@@ -23,7 +23,7 @@ config :logger, :console,
   metadata: [:request_id]
 
 config :home_budget, HomeBudget.Mailer,
-  adapter: Bamboo.SMTPAdapter,
+  adapter: Bamboo.MailgunAdapter,
   server: "smtp.org",
   port: 587,
   username: "username", 

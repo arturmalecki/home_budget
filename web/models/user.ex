@@ -38,6 +38,11 @@ defmodule HomeBudget.User do
     |> put_change(:reset_password_token, nil)
   end
 
+  def update_password(struct, password) do
+    struct
+    |> put_change(:encrypted_password, Comeonin.Bcrypt.hashpwsalt(password))
+  end
+
   def find_and_confirm_password(session_params, repo) do
     case repo.get_by(HomeBudget.User, email: String.downcase(session_params["email"])) do
       nil -> :error

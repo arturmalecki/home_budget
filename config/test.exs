@@ -33,3 +33,6 @@ config :guardian, Guardian,
 
 config :comeonin, :bcrypt_log_rounds, 4
 config :comeonin, :pbkdf2_rounds, 1
+
+config :home_budget, HomeBudget.Mailer,
+  adapter: Bamboo.TestAdapter

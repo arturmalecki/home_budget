@@ -1,12 +1,12 @@
 defmodule HomeBudget.Email do
   use Bamboo.Phoenix, view: HomeBudget.EmailView
 
-  def test_email(email_address) do
+  def password_reset_email(email_address, reset_password_url) do
     new_email
     |> to(email_address)
-    |> from("me@example.com")
-    |> subject("Welcome!!!")
-    |> html_body("<strong>Welcome</strong>")
-    |> text_body("welcome")
+    |> from("support@homebudget.com")
+    |> subject("Reset password")
+    |> assign(:reset_password_url, reset_password_url)
+    |> render(:password_reset_email)
   end
 end

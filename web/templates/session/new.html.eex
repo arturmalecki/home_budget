@@ -15,3 +15,5 @@
     <%= submit "Login", class: "btn btn-primary" %>
   </div>
 <% end %>
+
+<%= link "Forgot password", to: password_path(@conn, :new) %>
