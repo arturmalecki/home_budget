@@ -5,7 +5,8 @@ defmodule HomeBudget.DashboardController do
 
   def show(conn, _params) do
     user = Guardian.Plug.current_resource(conn)
-    render conn, "show.html", current_user: user
+    projects = Repo.all(HomeBudget.Project)
+    render conn, "show.html", current_user: user, projects: projects
   end
 
   def unauthenticated(conn, _params) do

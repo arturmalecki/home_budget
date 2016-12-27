@@ -33,6 +33,8 @@ defmodule HomeBudget.Router do
     resources "/passwords", PasswordController, only: [:new, :create, :edit, :update]
 
     get "/dashboard", DashboardController, :show
+
+    resources "/projects", ProjectController
   end
 
   # Other scopes may use custom stacks.

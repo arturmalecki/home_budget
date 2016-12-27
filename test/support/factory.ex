@@ -10,4 +10,13 @@ defmodule HomeBudget.Factory do
       encrypted_password: Comeonin.Bcrypt.hashpwsalt("password")
     }
   end
+
+  alias HomeBudget.Project
+
+  def project_factory do
+    %Project{
+      name: "Home budget",
+      user: build(:user)
+    }
+  end
 end
