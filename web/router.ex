@@ -34,7 +34,9 @@ defmodule HomeBudget.Router do
 
     get "/dashboard", DashboardController, :show
 
-    resources "/projects", ProjectController
+    resources "/projects", ProjectController do
+      resources "/accounts", AccountController
+    end
   end
 
   # Other scopes may use custom stacks.

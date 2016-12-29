@@ -7,6 +7,7 @@ defmodule HomeBudget.Project do
     timestamps()
 
     belongs_to :user, HomeBudget.User
+    has_many :accounts, HomeBudget.Account
   end
 
   @doc """

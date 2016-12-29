@@ -14,5 +14,6 @@
 
 </ul>
 
-<%= link "Edit", to: project_path(@conn, :edit, @project) %>
-<%= link "Back", to: dashboard_path(@conn, :show) %>
+<%= link "Edit", to: project_path(@conn, :edit, @project) %> | 
+<%= link "Back", to: dashboard_path(@conn, :show) %> | 
+<%= link "Accounts", to: project_account_path(@conn, :index, @project) %>

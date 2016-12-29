@@ -15,8 +15,17 @@ defmodule HomeBudget.Factory do
 
   def project_factory do
     %Project{
-      name: "Home budget",
-      user: build(:user)
+      name: "Home budget"
+    }
+  end
+
+  alias HomeBudget.Account
+
+  def account_factory do
+    %Account{
+      name: "Assets",
+      account_type: "assets",
+      parrent_acount_id: 0
     }
   end
 end

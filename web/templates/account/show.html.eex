@@ -1,0 +1,28 @@
+<h2>Show account</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @account.name %>
+  </li>
+
+  <li>
+    <strong>Project:</strong>
+    <%= @account.project_id %>
+  </li>
+
+  <li>
+    <strong>Account type:</strong>
+    <%= @account.account_type %>
+  </li>
+
+  <li>
+    <strong>Parrent acount:</strong>
+    <%= @account.parrent_acount_id %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: project_account_path(@conn, :edit, @project, @account) %>
+<%= link "Back", to: project_account_path(@conn, :index, @project) %>

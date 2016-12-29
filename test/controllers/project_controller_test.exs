@@ -69,7 +69,7 @@ defmodule HomeBudget.ProjectControllerTest do
 
   describe "update/2" do
     test "updates chosen resource and redirects when data is valid", %{user: user} do
-      project = insert(:project)
+      project = insert(:project, user_id: user.id)
       conn = guardian_login(user)
       conn = put conn, project_path(conn, :update, project), project: @valid_attrs
       assert redirected_to(conn) == dashboard_path(conn, :show)
