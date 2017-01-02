@@ -22,7 +22,7 @@ exports.config = {
     stylesheets: {
       joinTo: "css/app.css",
       order: {
-        after: ["web/static/css/app.css"] // concat app.css last
+        after: ["web/static/css/libs/*", "web/static/css/app.css"] // concat app.css last
       }
     },
     templates: {
@@ -64,6 +64,13 @@ exports.config = {
   },
 
   npm: {
-    enabled: true
+    enabled: true,
+    globals: {
+      $: 'jquery',
+      jQuery: 'jquery'
+    },
+    styles: {
+      bootstrap: ['dist/css/bootstrap.css']
+    }
   }
 };

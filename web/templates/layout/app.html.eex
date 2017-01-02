@@ -1,47 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
 
-    <title>Hello HomeBudget!</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
-  </head>
+		<title>Hello HomeBudget!</title>
+		<link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+	</head>
 
-  <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <h1><%= link "Home Budget v0.0.1", to: page_path(@conn, :index)  %></h1>
-        </nav>
-      </header>
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-2">
+ 					<nav class="navbar navbar-default navbar-fixed-side">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <%= link "Home Budget v0.0.1", to: page_path(@conn, :index), class: "navbar-brand"  %>
+              </div>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                  <%= if @current_user do %>
+                    <li class="<%= menu_item_class(@conn, "dashboard") %>"><%= link "Dashboard", to: dashboard_path(@conn, :show) %></li>
+                    <li role="separator" class="divider"></li>
+                    <li><%= link "Login out", to: session_path(@conn, :delete), method: :delete, class: "nav-link" %></li>
+                    <li role="separator" class="divider"></li>
+                  <% else %>
+                    <li class="<%= menu_item_class(@conn, "login") %>"><%= link "Login", to: session_path(@conn, :new) %></li>
+                    <li role="separator" class="divider"></li>
+                    <li class="<%= menu_item_class(@conn, "register") %>"><%= link "Register", to: registration_path(@conn, :new) %></li>
+                    <li role="separator" class="divider"></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+					</nav>
+				</div>
 
-      <main role="main">
-        <div class="row marketing">
-          <div class="col-lg-6">
-            <%= if @current_user do %>
-              <h4>User area</h4>
-                <%= link "Login out", to: session_path(@conn, :delete), method: :delete %>
-              </ul>
-            <% else %>
-              <h4>User area</h4>
-                <%= link "Login", to: session_path(@conn, :new) %> |
-                <%= link "Register", to: registration_path(@conn, :new) %>
-              </ul>
-            <% end %>
-          </div>
+				<div class="col-lg-10" id="main">
+					<p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+					<p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+					<main role="main">
+						<%= render @view_module, @view_template, assigns %>
+					</main>
         </div>
-
-        <%= render @view_module, @view_template, assigns %>
-      </main>
-
-    </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-  </body>
+			</div>
+		</div> <!-- /container -->
+		<script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+	</body>
 </html>
